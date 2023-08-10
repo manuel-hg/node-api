@@ -8,7 +8,9 @@ router.get('/', workoutController.getAllWorkouts)
       .post('/:workoutId', workoutController.createWorkout)
      .patch('/:workoutId', workoutController.updateWorkout)
      .delete('/:workout', workoutController.deleteWorkout);
+
 module.exports = router;
+
 /*router
     .get('/', (req, res) => {
         res.send('Get All workouts');

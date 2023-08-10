@@ -1,6 +1,6 @@
 const express = require('express');
 //const v1Router = require('./v1/routes');
-const v1WoroutRoutes = require('./v1/routes/workoutRoutes');
+const v1WorkoutRouter = require("./v1/routes/workoutRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 //app.use("/api/v1",v1Router);
 
-app.use('/api/v1/workouts', v1WoroutRoutes);
+app.use("/api/v1", v1WorkoutRouter);
 
 
 
