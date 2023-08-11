@@ -7,13 +7,33 @@ const getAllWorkouts = (req, res) => {
 };
 
 const getOneWorkout = (req, res) => {
-    const workout = workoutService.getOneWorkout;
-    res.send(`Get Workout ${req.params.workoutId}`);
+    const workout = workoutService.getOneWorkout(req.params.workoutId);
+    res.send({status: 200, data: workout});
 };
 
 const createWorkout = (req, res) => {
-    const createork = workoutService.createNewWorkout(req.params.workoutId);
-    res.send(`Create workout ${req.params.workoutId}`);
+    const {body} = req;
+    if(
+        !body.name ||
+        !body.mode ||
+        !body.equipment ||
+        !body.exercises ||
+        !body.trainerTips
+    ){
+        return;
+    }
+
+    const newWorkout = {
+        name: body.name,
+        mode: body.mode,
+        equipment: body.equipment,
+        exercises: body.exercises,
+        trainerTips: body.trainerTips
+    };
+
+    const creatework = workoutService.createNewWorkout(newWorkout);
+    res.send({status: (creatework ? 201 : 401), data: (creatework ? creatework : "Ya existe un usuario con ese nombre")});
+    /*res.send(`Create workout ${body}`);*/
 };
 
 const updateWorkout = (req, res) => {
